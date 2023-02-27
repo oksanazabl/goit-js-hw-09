@@ -2,6 +2,19 @@
 import flatpickr from 'flatpickr';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/flatpickr.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+const refs = {
+  dateInput: document.querySelector('#datetime-picker'),
+  button: document.querySelector('data-start'),
+  days: document.querySelector('data-days'),
+  hours: document.querySelector('data-hours'),
+  minutes: document.querySelector('data-minutes'),
+  seconds: document.querySelector('data-seconds'),
+};
+
+let selectedDates = [];
+let timerId = null;
 
 const options = {
   enableTime: true,
@@ -12,9 +25,11 @@ const options = {
     console.log(selectedDates[0]);
   },
 };
-selectedDates = [];
 
 window.alert('Please choose a date in the future');
+function addLeadingZero(value) {
+  padStart();
+}
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -38,7 +53,3 @@ function convertMs(ms) {
 console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
 console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
 console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
-
-function addLeadingZero(value) {
-  padStart();
-}
