@@ -15,7 +15,7 @@ function onFormsubmit(event) {
     Notify.failure('Please, enter correct data > 0');
     return;
   }
-  for (i = 1; i <= amount; i += 1) {
+  for (let i = 1; i <= amount; i += 1) {
     createPromise(i, delay)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
